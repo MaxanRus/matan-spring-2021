@@ -1,0 +1,16 @@
+name: Compile LaTeX
+on:
+  push:
+    branches: [master, dev]
+jobs:
+  generateDocs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile tex
+        run: apt install latex; latex -output-format=pdf pismak.tex
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+      
