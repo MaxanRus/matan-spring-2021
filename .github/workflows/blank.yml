@@ -1,14 +1,14 @@
 name: Compile LaTeX
 on:
   push:
-    branches: [master, dev]
+    branches: [master]
 jobs:
   generateDocs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Compile tex
-        run: sudo apt update -y; sudo apt upgrade -y; sudo apt install -y texlive-latex-extra; latex -output-format=pdf pismak.tex
+        run: sudo apt update -y; sudo apt upgrade -y; sudo apt install -y texlive-latex-extra texlive-lang-all; latex -output-format=pdf pismak.tex
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
