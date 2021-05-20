@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Compile tex
-        run: sudo update -y; sudo upgrade -y; sudo apt install -y latex; latex -output-format=pdf pismak.tex
+        run: sudo apt update -y; sudo apt upgrade -y; sudo apt install -y latex; latex -output-format=pdf pismak.tex
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
